@@ -88,19 +88,10 @@ const inputCheckValueOnChage =  (inputValue, inputName) => {
 
 // FORM CREATE ACCOUNT FUNCTION
 const formCreateAccount = (name, email, password) => {
-    // var myModal = new bootstrap.Modal(document.getElementById('myModal'))
-    
-    // if (!(name == '') && !(email == '')  && !(password == '')) {
-    //     myModal.show()
-    //     document.querySelector('#accountName').innerHTML = `${name}`
-    // } else {
-    //     console.log('namooo')
-    // }
-
     let array = [your_name, your_email, your_password]
     array.forEach(elem => {
         var parentDiv = elem.closest('.form-input');
-        console.log( parentDiv.hasAttribute('error-notif') )
+    
         if (parentDiv.hasAttribute('error-notif')) {
             switch (elem.id) {
                 case 'yourName':
@@ -128,12 +119,10 @@ const formCreateAccount = (name, email, password) => {
                     document.querySelector(".pw-error-feedback").innerHTML = "password is required"
                     break;
             }
-        } else if (!(your_name.closest('.form-input').hasAttribute('error-notif')) && !(your_email.closest('.form-input').hasAttribute('error-notif')) && !(your_password.closest('.form-input').hasAttribute('error-notif'))) {
-                    var sum = sum+1;
-                    console.log(sum)
-                    // var myModal = new bootstrap.Modal(document.getElementById('myModal'))
-                    // myModal.show()
-                    // document.querySelector('#accountName').innerHTML = `${name}`
+        } else if (!(your_name.closest('.form-input').hasAttribute('error-notif')) && !(your_email.closest('.form-input').hasAttribute('error-notif')) && !(your_password.closest('.form-input').hasAttribute('error-notif')) && array[array.length -1] === elem) {
+                    var myModal = new bootstrap.Modal(document.getElementById('myModal'))
+                    myModal.show()
+                    document.querySelector('#accountName').innerHTML = `${name}`
         }
     });
 }
