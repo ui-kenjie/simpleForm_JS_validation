@@ -11,14 +11,14 @@
 </head>
 <body>
 
-    <div class="mainContainer my-4">
+    <div class="mainContainer">
         <div class="container">
             <div class="logiform-container py-4">
                 <div class="flex-container d-flex flex-wrap justify-content-center bg-light p-0">
-                    <div class="column d-block p-3 p-md-4 getstarted-col">
-                        <div class="d-flex gap-4 content p-3 px-md-4 py-md-5 child-w-100 flex-wrap position-relative h-100 align-items-center">
+                    <div class="column d-block p-3 p-md-4 p-lg-5 p getstarted-col">
+                        <div class="d-flex gap-4 content p-3 px-md-4 py-md-5 px-lg-5 child-w-100 flex-wrap position-relative h-100 align-items-center">
                                 <div class="back-arrow position-relative">
-                                    <button class="btn btn-semitransparent rounded-pill py-0 px-4"><i class="fa-solid fa-arrow-right-long text-white"></i></button>
+                                    <button class="btn btn-semitransparent rounded-pill py-0 px-4 py-lg-2 px-lg-5"><i class="fa-solid fa-arrow-right-long text-white"></i></button>
                                 </div>
                                 <div class="text-content position-relative">
                                     <span class="text-secondary2">Hi Welcome!</span>
@@ -34,27 +34,55 @@
                     </div>
                     <div class="column d-block p-3 d-flex align-items-center justify-content-center h-100">
                         <div class="content">
-                            <div class="start-form py-4">
+                            <div class="form-wrapper py-4">
                                 <h2 class="mb-4">Sign Up</h2>
                                 <form action="">
                                     <div class="form-input mb-3 p-0">
                                         <label for="yourname" class="text-secondary">Your Name</label>
-                                        <Input type="text" class="default-input rounded-pill py-1 px-3 py-lg-2 mt-1 mt-lg-2" name="yourname" id="yourname"></Input>
+                                        <div class="input-relative position-relative mt-1 mt-lg-2">
+                                            <Input type="text" class="default-input rounded-pill py-1 ps-3 py-lg-2 input-required" name="yourName" id="yourName" maxlength="20" ></Input>
+                                            <div class="nameinput-icon-feedback icon-feedback">
+                                                <i class="fa-solid fa-circle-exclamation text-danger icon"></i>
+                                                <i class="fa-solid fa-circle-check text-success icon"></i>
+                                            </div>
+                                        </div>
+                                        <small class="name-error-feedback error-feedback text-danger text-small"></small>
                                     </div>
                                     <div class="form-input mb-3 p-0">
                                         <label for="youremail" class="text-secondary">Your Email</label>
-                                        <Input type="text" class="default-input rounded-pill py-1 px-3 py-lg-2 mt-1 mt-lg-2" name="youremail" id="youremail"></Input>
+                                        <div class="input-relative position-relative mt-1 mt-lg-2">
+                                            <Input type="text" class="default-input rounded-pill py-1 ps-3 py-lg-2 input-required" name="yourEmail" id="yourEmail" maxlength="40"></Input>
+                                            <div class="nameinput-icon-feedback icon-feedback">
+                                                <i class="fa-solid fa-circle-exclamation text-danger icon"></i>
+                                                <i class="fa-solid fa-circle-check text-success icon"></i>
+                                            </div>
+                                        </div>
+                                        <small class="email-error-feedback error-feedback text-danger text-small"></small>
                                     </div>
                                     <div class="form-input mb-3 p-0">
                                         <label for="yourpassword" class="text-secondary">Your Password</label>
-                                        <Input type="password" class="default-input rounded-pill py-1 px-3 py-lg-2 mt-1 mt-lg-2" name="yourpassword" id="yourpassword"></Input>
+                                        <div class="input-relative position-relative mt-1 mt-lg-2">
+                                            <Input type="password" class="default-input rounded-pill py-1 ps-3 py-lg-2 input-required" name="yourPassword" id="yourPassword" maxlength="40"></Input>
+                                            <div class="nameinput-icon-feedback icon-feedback">
+                                                <i class="fa-solid fa-circle-exclamation text-danger icon"></i>
+                                                <i class="fa-solid fa-circle-check text-success icon"></i>
+                                            </div>
+                                            <div id="showPassword" class="show-password">
+                                                <i class="fa-solid fa-eye icon"></i>
+                                                <i class="fa-solid fa-eye-slash icon"></i>
+                                            </div>
+                                        </div>
+                                        <small><a href="javascript:void(0)" class="show-password"></a></small>
+                                        <small class="pw-error-feedback error-feedback text-danger text-small"></small>
                                     </div>
                                     <div class="form-check mb-3 p-0">
-                                        <input type="checkbox" name="rememberme" id="rememberme">
-                                        <label for="rememberme">Remember me</label>
+                                        <input type="checkbox" name="rememberme" id="rememberMe">
+                                        <label for="rememberMe">Remember me</label>
                                     </div>
                                     <div class="form-submit">
-                                        <button type="button" class="btn btn-success w-100 rounded-pill py-lg-2 mt-1 mt-lg-2">Create Account    </button>
+                                        <button id="btnCreateAccount" type="button" class="btn btn-success w-100 rounded-pill py-lg-2 mt-1 mt-lg-2">
+                                            Create Account    
+                                        </button>
                                     </div>
                                 </form>
                                 <div class="other-options-signup text-center py-3">
@@ -83,8 +111,24 @@
         </div>
     </div>
    
-
-
+<!-- MODAL -->
+<div class="modal fade" id="myModal" data-bs-backdrop="static" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Welcome to my Simple Signup Form</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <h4>Hello, <span id="accountName"></span></h4>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
 </body>
 <script src="./main.js"></script>
 </html>
