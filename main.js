@@ -58,7 +58,11 @@ const inputCheckValueOnChage =  (inputValue, inputName) => {
             var passwordCapital = /[A-Z]+/;
             var passwordNumber = /[0-9]+/;
             var passwordSpecial = /[$@#&!]+/;
-            if (!inputValue.match(passwordLower)) {
+            if (inputValue.length < 10) {
+                inputName.target.closest('div.form-input').removeAttribute('success-notif','');
+                inputName.target.closest('div.form-input').setAttribute('error-notif','');
+                document.querySelector(".pw-error-feedback").innerHTML = "should more than 10 character" // Add label error notification
+            } else if (!inputValue.match(passwordLower)) {
                 inputName.target.closest('div.form-input').removeAttribute('success-notif','');
                 inputName.target.closest('div.form-input').setAttribute('error-notif','');
                 document.querySelector(".pw-error-feedback").innerHTML = "password should have small letter" // Add label error notification
@@ -124,7 +128,7 @@ const formCreateAccount = (name, email, password) => {
                     document.querySelector(".pw-error-feedback").innerHTML = "password is required"
                     break;
             }
-        } else if ( test ) {
+        } else   {
             console.log('correct na!!')
         }
     });
