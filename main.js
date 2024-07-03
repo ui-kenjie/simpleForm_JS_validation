@@ -128,8 +128,12 @@ const formCreateAccount = (name, email, password) => {
                     document.querySelector(".pw-error-feedback").innerHTML = "password is required"
                     break;
             }
-        } else   {
-            console.log('correct na!!')
+        } else if (!(your_name.closest('.form-input').hasAttribute('error-notif')) && !(your_email.closest('.form-input').hasAttribute('error-notif')) && !(your_password.closest('.form-input').hasAttribute('error-notif'))) {
+                    var sum = sum+1;
+                    console.log(sum)
+                    // var myModal = new bootstrap.Modal(document.getElementById('myModal'))
+                    // myModal.show()
+                    // document.querySelector('#accountName').innerHTML = `${name}`
         }
     });
 }
